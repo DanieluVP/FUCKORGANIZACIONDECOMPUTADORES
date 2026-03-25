@@ -1,0 +1,145 @@
+🚨 1. QUÉ ES ESTO (IMPORTANTE)
+
+Ese archivo:
+
+👉 ALU.hdl
+es donde tú construyes la ALU en Nand2Tetris.
+
+👉 Tu objetivo:
+
+conectar chips
+seguir las reglas de control (zx, nx, zy, ny, f, no)
+💻 2. CÓDIGO COMPLETO (LO QUE NECESITAS)
+
+👉 ESTE ES EL QUE DEBES SABER / ENTENDER
+
+CHIP ALU {
+    IN  
+        x[16], y[16],
+        zx, nx, zy, ny, f, no;
+    OUT 
+        out[16],
+        zr,
+        ng;
+
+    PARTS:
+    // zx: if 1 → x = 0
+    Mux16(a=x, b=false, sel=zx, out=x1);
+
+    // nx: if 1 → x = !x
+    Not16(in=x1, out=notx);
+    Mux16(a=x1, b=notx, sel=nx, out=x2);
+
+    // zy: if 1 → y = 0
+    Mux16(a=y, b=false, sel=zy, out=y1);
+
+    // ny: if 1 → y = !y
+    Not16(in=y1, out=noty);
+    Mux16(a=y1, b=noty, sel=ny, out=y2);
+
+    // f: 1 = suma, 0 = AND
+    Add16(a=x2, b=y2, out=addxy);
+    And16(a=x2, b=y2, out=andxy);
+    Mux16(a=andxy, b=addxy, sel=f, out=out1);
+
+    // no: negar salida
+    Not16(in=out1, out=notout);
+    Mux16(a=out1, b=notout, sel=no, out=out);
+
+    // zr: out == 0
+    Or16Way(in=out, out=orOut);
+    Not(in=orOut, out=zr);
+
+    // ng: out < 0 → bit más significativo
+    // (bit 15)
+    // si es 1 → negativo
+    ng = out[15];
+}
+🧠 3. CÓMO ENTENDERLO (ESTO ES LO QUE TE EVALÚAN)
+
+👉 Esto sigue EXACTAMENTE lo de tus diapositivas:
+
+zx → nx → zy → ny → f → no
+
+💥 el código es solo esa lógica en hardware
+
+🔥 4. TRADUCCIÓN A EXAMEN
+
+Si te preguntan:
+
+👉 “explique la ALU”
+
+Respondes:
+
+“La ALU manipula las entradas x y y mediante señales de control (zx, nx, zy, ny), luego realiza una operación (suma o AND) y finalmente puede negar el resultado. Adicionalmente calcula los flags zr y ng.”
+
+🚨 5. LO QUE TE PUEDEN PONER
+🔥 CASO 1: completar código
+
+👉 te dan ALU.hdl incompleto → tú completas con:
+
+Mux16
+Not16
+Add16
+And16
+🔥 CASO 2: explicar funcionamiento
+
+👉 dices:
+
+entradas → modificadas
+operación → suma/AND
+salida → posible negación
+🔥 CASO 3: calcular resultado
+
+👉 haces pasos:
+
+zx
+nx
+zy
+ny
+f
+no
+💣 6. LO QUE DEBES MEMORIZAR (CRÍTICO)
+🔥 chips que SIEMPRE usas
+Mux16
+Not16
+Add16
+And16
+Or16Way
+🔥 lógica clave
+
+👉 Mux = elegir
+👉 Not = negar
+👉 Add = sumar
+👉 And = multiplicación lógica
+
+🧠 7. CONEXIÓN CON CPU (TE PUEDEN PREGUNTAR)
+
+👉 esto conecta con lo que viste:
+
+“La CPU utiliza la ALU para ejecutar instrucciones tipo C del lenguaje Hack.”
+
+🚨 8. RESPUESTA PERFECTA PARA GANAR PUNTOS
+
+Si te bloqueas escribe:
+
+“La ALU se implementa mediante multiplexores y compuertas lógicas que permiten modificar las entradas y seleccionar la operación deseada según los bits de control.”
+
+💥 eso suma mucho
+
+💪 CONCLUSIÓN
+
+👉 Con esto ya tienes:
+
+ALU práctica (Nand2Tetris)
+teoría
+lógica
+conexión con CPU
+🚀 ÚLTIMO EMPUJÓN
+
+Si quieres asegurarlo TODO:
+
+👉 dime: “simulacro con ALU + CPU + código”
+
+y te hago un examen completo
+igualito al tuyo para practicar 💥
