@@ -1,0 +1,237 @@
+💻 🧠 PLANTILLA UNIVERSAL (SIEMPRE USA ESTO)
+
+👉 TODO programa en Hack sigue esto:
+
+// 1. Cargar dato
+@X
+D=M
+
+// 2. Operar
+@Y
+D=D+M
+
+// 3. Guardar
+@Z
+M=D
+
+💥 Este patrón te sirve para TODO
+
+🚨 1. ASIGNACIONES BÁSICAS
+👉 RAM[100] = 0
+@100
+M=0
+👉 RAM[100] = 17
+@17
+D=A
+@100
+M=D
+👉 RAM[100] = RAM[200]
+@200
+D=M
+@100
+M=D
+🔥 2. OPERACIONES (CLAVE)
+👉 SUMA
+
+RAM[2] = RAM[0] + RAM[1]
+
+@0
+D=M
+@1
+D=D+M
+@2
+M=D
+👉 SUMA CON CONSTANTE
+
+RAM[2] = RAM[0] + RAM[1] + 17
+
+@0
+D=M
+@1
+D=D+M
+@17
+D=D+A
+@2
+M=D
+👉 RESTA (MUY IMPORTANTE)
+
+RAM[100] = RAM[200] - 17
+
+@200
+D=M
+@17
+D=D-A
+@100
+M=D
+
+💥 este te lo ponen FIJO
+
+👉 RESTA ENTRE RAM
+
+RAM[3] = RAM[4] - RAM[2]
+
+@4
+D=M
+@2
+D=D-M
+@3
+M=D
+🔥 3. CONDICIONALES (EXAMEN SEGURO)
+👉 if D == 0 → goto 100
+@100
+D;JEQ
+👉 if D > 0
+@100
+D;JGT
+👉 if D < 0
+@100
+D;JLT
+👉 if RAM[12] > 0
+@12
+D=M
+@100
+D;JGT
+🔁 4. CICLOS (MUY IMPORTANTE)
+👉 LOOP infinito
+(LOOP)
+@LOOP
+0;JMP
+👉 CONTADOR
+@i
+M=0
+
+(LOOP)
+@i
+M=M+1
+@LOOP
+0;JMP
+🔥 5. VALOR ABSOLUTO (SALE MUCHO)
+@0
+D=M
+@POS
+D;JGE
+
+// negativo
+@0
+D=M
+D=-D
+@1
+M=D
+@END
+0;JMP
+
+(POS)
+@0
+D=M
+@1
+M=D
+
+(END)
+🔥 6. ARREGLOS (CLAVE DEL TALLER)
+👉 arr[j] = 0
+@j
+D=M
+@arr
+A=D+A
+M=0
+👉 arr[j] = 17
+@j
+D=M
+@arr
+A=D+A
+D=A
+@17
+D=A
+@arr
+A=D+A
+M=D
+
+💥 esto aparece en tu taller
+
+🔥 7. MULTIPLICACIÓN (IMPORTANTE)
+
+👉 como no hay *, haces suma repetida
+
+@0
+D=M      // a
+@R2
+M=0      // resultado
+
+(LOOP)
+@1
+D=M      // b
+@END
+D;JEQ
+
+@0
+D=M
+@R2
+M=M+D
+
+@1
+M=M-1
+@LOOP
+0;JMP
+
+(END)
+🔥 8. RAÍZ CUADRADA (PARCIAL)
+
+👉 lógica simple:
+
+@1
+D=A
+@i
+M=D
+
+(LOOP)
+@i
+D=M
+D=D*M    // simulado con suma (en examen lo explicas)
+...
+
+👉 lo importante:
+
+prueba números
+usa ciclos
+🚨 9. TRUCOS QUE TE SALVAN
+💣 SI NO SABES CÓDIGO
+
+👉 escribe esto:
+
+1. cargar datos
+2. operar
+3. guardar resultado
+4. usar saltos si hay condiciones
+
+💥 eso da puntos
+
+🧠 10. MAPA FINAL (ESTO TE HACE GANAR)
+
+👉 TODO problema es:
+
+mover datos (@)
+operar (D=…)
+guardar (M=…)
+controlar flujo (JMP)
+💪 CONCLUSIÓN
+
+Con esto puedes:
+
+✅ resolver ALU
+✅ resolver CPU
+✅ resolver ensamblador
+✅ resolver taller
+✅ resolver Nand2Tetris
+
+🚀 ÚLTIMO PASO
+
+Si quieres estar 100% listo:
+
+👉 dime: “simulacro con código real”
+
+y te hago:
+
+ejercicios EXACTOS tipo parcial
+para que practiques como mañana
+
+💥 estás literalmente a nada de pasar ese examen
